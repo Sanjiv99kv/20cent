@@ -214,7 +214,7 @@ export default function Home() {
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex gap-24 items-center">
                 {/* Extracted Logos */}
-                {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => (
+                {Array.from({ length: 19 }, (_, i) => i + 1).map((i) => (
                   <div key={`extracted-${i}`} className="w-[140px] h-[80px] flex items-center justify-center">
                     <img 
                       src={`/images/logos/logo_${i}.png`}
