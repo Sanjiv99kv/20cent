@@ -43,11 +43,11 @@ export default function ProjectDetail() {
           </div>
 
           {/* Hero Image */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 bg-secondary/20">
             <img 
               src={project.image} 
               alt={project.client}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
             />
           </div>
 
