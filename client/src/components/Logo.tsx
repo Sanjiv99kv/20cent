@@ -9,7 +9,7 @@ export default function Logo({ className, variant = "default" }: LogoProps) {
   return (
     <div className={cn("flex items-center select-none", className)}>
       <img 
-        src="/images/logo-transparent.png" 
+        src="/images/logo-full.png" 
         alt="Twenty Cents Studio" 
         className={cn(
           "h-auto object-contain",
