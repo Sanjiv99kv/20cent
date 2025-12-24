@@ -188,54 +188,86 @@ export default function Services() {
       <section className="pt-32 pb-20 bg-secondary/30 overflow-hidden">
         <div className="container relative">
           <div className="text-center mb-24">
-            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Proposal Flow</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A streamlined process designed to move from concept to execution with precision and clarity.
-            </p>
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase mb-4 block"
+            >
+              Our Process
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-display font-bold text-4xl md:text-5xl mb-6"
+            >
+              Proposal Flow
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+            >
+              A streamlined, transparent journey from your initial vision to the final premium delivery.
+            </motion.p>
           </div>
 
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
             {/* Connecting Line Background (Desktop) */}
-            <div className="absolute top-[140px] left-0 w-full h-2 bg-border/30 rounded-full hidden md:block overflow-hidden">
-               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent w-1/2 animate-marquee" />
+            <div className="absolute top-[120px] left-0 w-full h-1 bg-gradient-to-r from-transparent via-border to-transparent hidden md:block overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500 to-transparent w-1/3 animate-marquee opacity-50" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
               {[
                 {
                   step: "01",
                   title: "Inquiry",
-                  desc: "Contact us via form or email to discuss your vision.",
+                  desc: "Reach out via our contact form or email. We'll schedule an initial consultation to understand your vision, goals, and technical requirements.",
+                  details: ["Initial Consultation", "Requirement Definition", "Feasibility Check"],
                   image: "/images/flow/inquiry-3d.png"
                 },
                 {
                   step: "02",
                   title: "Quotation",
-                  desc: "We analyze requirements and provide a detailed estimate.",
+                  desc: "Based on our discussion, we provide a comprehensive proposal including a detailed timeline, cost breakdown, and strategic roadmap.",
+                  details: ["Strategic Roadmap", "Cost Breakdown", "Scope Definition"],
                   image: "/images/flow/quote-3d.png"
                 },
                 {
                   step: "03",
                   title: "Demo Production",
-                  desc: "We create a high-fidelity prototype to visualize the outcome.",
+                  desc: "We create a high-fidelity prototype or storyboard. This ensures our creative direction aligns perfectly with your expectations before full production.",
+                  details: ["UI/UX Prototyping", "Visual Direction", "Feedback Loop"],
                   image: "/images/flow/demo-3d.png"
                 },
                 {
                   step: "04",
                   title: "Service Start",
-                  desc: "Official kickoff with a dedicated team and roadmap.",
+                  desc: "Official project kickoff. Our dedicated team begins the full-scale production, maintaining transparent communication throughout the lifecycle.",
+                  details: ["Kickoff Meeting", "Agile Development", "Regular Updates"],
                   image: "/images/flow/start-3d.png"
                 }
               ].map((item, i) => (
-                <div key={i} className="group relative flex flex-col items-center">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  className="group relative flex flex-col items-center"
+                >
                   
-                  {/* 3D Icon Container - Perfectly Aligned */}
-                  <div className="relative w-40 h-40 mb-12 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+                  {/* 3D Icon Container */}
+                  <div className="relative w-32 h-32 mb-10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
                     {/* Glow Effect */}
-                    <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
                     {/* Connector Dot on Line */}
-                    <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background border-4 border-accent rounded-full z-0 hidden md:block shadow-[0_0_15px_rgba(0,0,0,0.1)] group-hover:scale-150 transition-transform duration-300" />
+                    <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-background border-[3px] border-muted-foreground/30 rounded-full z-0 hidden md:flex items-center justify-center shadow-lg group-hover:border-blue-500 transition-colors duration-300">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
 
                     <img 
                       src={item.image} 
@@ -244,30 +276,41 @@ export default function Services() {
                     />
                   </div>
 
-                  {/* Content Card - Symmetrical Height */}
-                  <div className="w-full bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:border-accent/30 transition-all duration-300 flex flex-col items-center text-center h-[280px] relative overflow-hidden group-hover:-translate-y-1">
+                  {/* Content Card */}
+                  <div className="w-full bg-background/50 backdrop-blur-sm rounded-xl p-6 border border-border/50 shadow-sm hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 flex flex-col h-[380px] relative overflow-hidden group-hover:-translate-y-1">
                     
-                    {/* Step Number Watermark */}
-                    <div className="absolute -top-4 -right-4 text-8xl font-bold text-muted-foreground/5 select-none group-hover:text-accent/5 transition-colors duration-500 font-display">
-                      {item.step}
+                    {/* Step Number */}
+                    <div className="text-xs font-bold tracking-widest text-blue-600 mb-3 uppercase">
+                      Step {item.step}
                     </div>
 
-                    <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-accent transition-colors duration-300 relative z-10">
+                    <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-blue-600 transition-colors duration-300">
                       {item.title}
                     </h3>
                     
-                    <div className="w-12 h-1 bg-accent/20 rounded-full mb-6 group-hover:w-24 group-hover:bg-accent transition-all duration-500" />
-
-                    <p className="text-muted-foreground leading-relaxed relative z-10">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
                       {item.desc}
                     </p>
+
+                    {/* Details List */}
+                    <div className="space-y-2 border-t border-border/50 pt-4">
+                      {item.details.map((detail, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-xs font-medium text-foreground/70">
+                          <div className="w-1 h-1 rounded-full bg-blue-500" />
+                          {detail}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Bottom Gradient Line */}
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                   </div>
 
                   {/* Mobile Connector Line */}
                   {i !== 3 && (
-                    <div className="md:hidden w-1 h-12 bg-gradient-to-b from-border to-transparent my-4" />
+                    <div className="md:hidden w-0.5 h-8 bg-gradient-to-b from-border to-transparent my-2" />
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
