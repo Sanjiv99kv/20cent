@@ -1,31 +1,11 @@
-# Website Update Tasks
+# Website Update Tasks - Work Section
 
-- [ ] **Assets & Design**
-    - [ ] Recreate "Twenty Cents." logo with rainbow gradient bar using SVG/CSS for high quality.
-    - [ ] Ensure rainbow gradient is consistent across all elements.
-    - [ ] Add more scroll-triggered animations (fade-ins, slide-ups).
+- [ ] **Asset Extraction**
+    - [ ] Extract "EveryX" branding image from PDF Page 4.
+    - [ ] Extract client logo grid from PDF Page 5.
+    - [ ] Save images to `client/public/images/`.
 
-- [ ] **Work Page**
-    - [ ] Create a grid layout for portfolio items.
-    - [ ] Add "EveryX" project with details (Logo, Brand Guidelines).
-    - [ ] Add other clients from the list (Amazon, Disney, etc.) as portfolio cards.
-    - [ ] Implement category filtering (All, Web, Video, Branding).
-
-- [ ] **Services Page**
-    - [ ] Detailed descriptions for Web Development, Video Production, Brand Guidelines.
-    - [ ] Implement the "Process Flow" section (Inquiry -> Quote -> Demo -> Start).
-    - [ ] Add the "AI x Human" value proposition section.
-
-- [ ] **About Page**
-    - [ ] Company profile section (Name, Location, Phone, Email).
-    - [ ] "Integrated Creative Studio" philosophy content.
-    - [ ] Office/Team imagery (using generated assets).
-
-- [ ] **Contact Page**
-    - [ ] Functional contact form (UI only).
-    - [ ] Google Maps integration (using the address).
-    - [ ] Contact details (Phone, Email, Address).
-
-- [ ] **General**
-    - [ ] Ensure all buttons and links work.
-    - [ ] Verify responsive design on mobile.
+- [ ] **Work Page Update**
+    - [ ] Replace generic project cards with "EveryX" case study using the extracted image.
+    - [ ] Create a "Client List" section displaying the extracted logo grid.
+    - [ ] Ensure text matches PDF: "Brand Guidelines" for EveryX, and list all clients (Money Forward, Mitsui Fudosan, Vector, etc.).

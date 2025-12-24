@@ -1,157 +1,95 @@
-import { useState } from "react";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 
-type Category = "All" | "Web" | "Video" | "Branding";
-
-interface Project {
-  id: number;
-  client: string;
-  category: Exclude<Category, "All">;
-  image: string;
-  description: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    client: "EveryX",
-    category: "Branding",
-    image: "/images/service-branding.png",
-    description: "Brand Strategy & Logo Design"
-  },
-  {
-    id: 2,
-    client: "Amazon",
-    category: "Web",
-    image: "/images/service-web.png",
-    description: "Campaign Microsite Development"
-  },
-  {
-    id: 3,
-    client: "Disney Japan",
-    category: "Video",
-    image: "/images/service-video.png",
-    description: "Promotional Video Production"
-  },
-  {
-    id: 4,
-    client: "Shake Shack",
-    category: "Web",
-    image: "/images/service-web.png",
-    description: "Digital Menu Experience"
-  },
-  {
-    id: 5,
-    client: "Mitsui Fudosan",
-    category: "Branding",
-    image: "/images/service-branding.png",
-    description: "Corporate Identity Refresh"
-  },
-  {
-    id: 6,
-    client: "TATRAS",
-    category: "Video",
-    image: "/images/service-video.png",
-    description: "Fashion Film Production"
-  },
-  {
-    id: 7,
-    client: "Yoshimoto",
-    category: "Web",
-    image: "/images/service-web.png",
-    description: "Talent Portal Development"
-  },
-  {
-    id: 8,
-    client: "Charles & Keith",
-    category: "Video",
-    image: "/images/service-video.png",
-    description: "Social Media Campaign"
-  },
-  {
-    id: 9,
-    client: "Money Forward",
-    category: "Branding",
-    image: "/images/service-branding.png",
-    description: "Visual Identity System"
-  }
-];
-
 export default function Work() {
-  const [activeCategory, setActiveCategory] = useState<Category>("All");
-
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const clients = [
+    "Money Forward", "Mitsui Fudosan", "Vector", "Memolead", "Yellow Hat", "Ota Pro",
+    "TATRAS", "Walt Disney Company", "Yoshimoto", "TCB", "Amazon", "Ultra Japan",
+    "Shake Shack", "CASETiFY", "Nobel", "AMATERAS", "Sol Octagon Tokyo", "Charles & Keith"
+  ];
 
   return (
     <Layout>
       <div className="container py-32">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20">
-          <div>
-            <h1 className="font-display font-bold text-6xl md:text-8xl mb-6 tracking-tighter">
-              Selected Work
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-xl">
-              A collection of projects where we've applied our AI × Human philosophy to deliver exceptional results.
-            </p>
-          </div>
-          
-          {/* Filter Buttons */}
-          <div className="flex gap-2 mt-8 md:mt-0 overflow-x-auto pb-2 md:pb-0">
-            {(["All", "Web", "Video", "Branding"] as Category[]).map((cat) => (
-              <Button
-                key={cat}
-                variant={activeCategory === cat ? "default" : "outline"}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "rounded-full px-6",
-                  activeCategory === cat ? "bg-black text-white" : "hover:bg-secondary"
-                )}
-              >
-                {cat}
-              </Button>
-            ))}
-          </div>
+        <div className="mb-20">
+          <h1 className="font-display font-bold text-6xl md:text-8xl mb-6 tracking-tighter">
+            Selected Work
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-xl">
+            A collection of projects where we've applied our AI × Human philosophy to deliver exceptional results.
+          </p>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div 
-              key={project.id}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-secondary cursor-pointer animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <img 
-                src={project.image} 
-                alt={project.client}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-sm font-bold text-white/60 uppercase tracking-widest mb-2">
-                    {project.category}
+        {/* Featured Case Study: EveryX */}
+        <section className="mb-32">
+          <h2 className="font-display font-bold text-3xl mb-8 flex items-center gap-4">
+            <span className="text-sm font-bold text-muted-foreground uppercase tracking-widest border border-border px-3 py-1 rounded-full">Case Study</span>
+            EveryX
+          </h2>
+          
+          <div className="group relative rounded-2xl overflow-hidden bg-black border border-border">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              {/* Image Side */}
+              <div className="relative aspect-[16/9] lg:aspect-auto overflow-hidden">
+                <img 
+                  src="/images/everyx-branding.webp" 
+                  alt="EveryX Brand Guidelines"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+
+              {/* Content Side */}
+              <div className="p-8 lg:p-12 flex flex-col justify-center space-y-6 bg-secondary/5">
+                <div>
+                  <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500 uppercase tracking-widest mb-2">
+                    Branding
                   </p>
-                  <h3 className="font-display font-bold text-3xl text-white mb-2">
-                    {project.client}
+                  <h3 className="font-display font-bold text-4xl md:text-5xl text-white mb-4">
+                    Brand Guidelines
                   </h3>
-                  <p className="text-white/80 mb-6">
-                    {project.description}
+                  <p className="text-gray-400 text-lg leading-relaxed">
+                    From logo design based on brand strategy to uniqueness and distinctiveness verification assuming trademark registration, and legal risk checks, we handle everything consistently.
                   </p>
-                  <div className="flex items-center gap-2 text-white font-bold group/btn">
-                    View Case Study <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </div>
+                </div>
+                
+                <div className="pt-4">
+                  <button className="flex items-center gap-2 text-white font-bold group/btn hover:text-gray-300 transition-colors">
+                    View Project Details <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </button>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </section>
+
+        {/* Client List Section */}
+        <section>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <h2 className="font-display font-bold text-4xl md:text-5xl">Client List</h2>
+            <p className="text-muted-foreground max-w-md text-right mt-4 md:mt-0">
+              We maintain high expertise in both development and video while realizing flexible delivery timelines matching client speed.
+            </p>
+          </div>
+
+          {/* Client Logos Image from PDF */}
+          <div className="w-full bg-white rounded-2xl p-8 md:p-16 border border-border mb-12">
+            <img 
+              src="/images/client-logos.webp" 
+              alt="Client Logos: Money Forward, Mitsui Fudosan, Vector, Yellow Hat, TATRAS, Disney, Amazon, Shake Shack, etc."
+              className="w-full h-auto object-contain mix-blend-multiply"
+            />
+          </div>
+
+          {/* Text List for Accessibility/SEO */}
+          <div className="flex flex-wrap gap-x-8 gap-y-4 justify-center text-muted-foreground text-sm font-medium uppercase tracking-wider">
+            {clients.map((client, i) => (
+              <span key={i} className="hover:text-foreground transition-colors cursor-default">
+                {client}
+              </span>
+            ))}
+          </div>
+        </section>
       </div>
     </Layout>
   );
