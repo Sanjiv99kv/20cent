@@ -166,21 +166,53 @@ export default function Home() {
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gradient-to-r from-red-500/5 to-blue-500/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
         
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 rounded-2xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-700" />
-            <div className="relative rounded-xl overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative group"
+          >
+            {/* Animated Glow Effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-700 animate-pulse-slow" />
+            
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg shadow-xl hidden md:block"
+            >
+              <Code className="w-6 h-6 text-blue-400" />
+            </motion.div>
+            <motion.div 
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -bottom-6 -left-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg shadow-xl hidden md:block"
+            >
+              <PenTool className="w-6 h-6 text-pink-400" />
+            </motion.div>
+
+            <div className="relative rounded-xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02]">
               <img 
-                src="/images/about-studio.png" 
-                alt="Studio Interior" 
-                className="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+                src="/images/ai-human-fusion.png" 
+                alt="AI x Human Fusion" 
+                className="w-full aspect-square object-cover transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Interactive Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-          </div>
-          <div className="space-y-8">
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
+          >
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight">
               AI × Human <br />
-              <span className="text-gray-400">Optimization</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Optimization</span>
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
@@ -197,7 +229,7 @@ export default function Home() {
                 </a>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
