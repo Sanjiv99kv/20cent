@@ -131,7 +131,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
           <div className="md:col-span-2 space-y-6">
             <div className="text-white">
-              <Logo className="text-white [&_span]:text-white" />
+              <Logo className="brightness-0 invert" />
             </div>
             <p className="text-gray-400 max-w-md leading-relaxed">
               An integrated creative studio optimizing the boundary between AI efficiency and human creativity.
