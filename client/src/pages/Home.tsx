@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Play, Code, PenTool, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,58 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden">
+      <section className="relative h-[90vh] flex items-center overflow-hidden bg-background">
+        {/* Dynamic Background Effects */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Animated Gradient Orbs */}
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, 50, 0],
+              y: [0, -30, 0]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-[100px]" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.4, 0.2],
+              x: [0, -40, 0],
+              y: [0, 40, 0]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-red-500/10 to-yellow-500/10 rounded-full blur-[120px]" 
+          />
+
+          {/* Floating Particles */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute bg-white rounded-full opacity-20"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                scale: Math.random() * 0.5 + 0.5,
+              }}
+              animate={{
+                y: [null, Math.random() * -100],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              style={{
+                width: Math.random() * 4 + 2 + "px",
+                height: Math.random() * 4 + 2 + "px",
+              }}
+            />
+          ))}
+        </div>
+
         <div 
           ref={heroRef}
           className="absolute inset-0 z-0"
@@ -35,26 +87,41 @@ export default function Home() {
           <img 
             src="/images/hero-abstract.png" 
             alt="Abstract Prism" 
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover opacity-90 mix-blend-overlay"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-background" />
         </div>
 
         <div className="container relative z-10 pt-20">
           <div className="max-w-4xl">
-            <h1 className="font-display font-bold text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="font-display font-bold text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8"
+            >
               Integrated <br />
               <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500">Creative Studio.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-[length:200%_auto] animate-gradient">Creative Studio.</span>
                 <span className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 opacity-30 blur-lg animate-pulse" />
               </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
+            >
               Optimizing the boundary between AI efficiency and human creativity to deliver premium digital experiences.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+              className="flex flex-wrap gap-4"
+            >
               <Link href="/work">
-                <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-black text-white hover:bg-gray-800 hover:scale-105 transition-all duration-300">
+                <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-black text-white hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                   View Our Work
                 </Button>
               </Link>
@@ -63,13 +130,18 @@ export default function Home() {
                   Contact Us
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+        >
           <ChevronDown className="w-8 h-8 text-muted-foreground" />
-        </div>
+        </motion.div>
       </section>
 
       {/* Client Ticker */}
