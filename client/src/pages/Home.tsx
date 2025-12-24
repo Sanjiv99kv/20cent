@@ -204,30 +204,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Client Ticker */}
-      <section className="py-12 border-y border-border bg-secondary/30 overflow-hidden">
-        <div className="container mb-6">
-          <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t.ticker.trustedBy}</p>
-        </div>
-        <div className="relative flex overflow-x-hidden group">
-          <div className="animate-marquee whitespace-nowrap flex gap-24 items-center" style={{ animationDuration: '40s' }}>
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-24 items-center">
-                {/* Extracted Logos */}
-                {Array.from({ length: 19 }, (_, i) => i + 1).map((i) => (
-                  <div key={`extracted-${i}`} className="w-[140px] h-[80px] flex items-center justify-center bg-white/5 rounded-lg">
-                    <img 
-                      src={`/images/logos/logo_${i}.png`}
-                      alt="Client Logo"
-                      className="max-w-full max-h-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* About / Philosophy Section */}
       <section className="py-32 bg-background relative overflow-hidden">
