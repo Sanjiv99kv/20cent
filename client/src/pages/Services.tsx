@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { Code, Video, PenTool, MessageSquare, FileText, MonitorPlay, Rocket } from "lucide-react";
+import FAQ from "@/components/FAQ";
 import { motion } from "framer-motion";
 
 export default function Services() {
@@ -184,7 +185,7 @@ export default function Services() {
       </section>
 
       {/* Proposal Flow */}
-      <section className="py-32 bg-secondary/30 overflow-hidden">
+      <section className="pt-32 pb-20 bg-secondary/30 overflow-hidden">
         <div className="container relative">
           <div className="text-center mb-24">
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Proposal Flow</h2>
@@ -272,6 +273,9 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
     </Layout>
   );
 }
