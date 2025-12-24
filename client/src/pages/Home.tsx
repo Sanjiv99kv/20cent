@@ -215,11 +215,11 @@ export default function Home() {
               <div key={setIndex} className="flex gap-24 items-center">
                 {/* Extracted Logos */}
                 {Array.from({ length: 19 }, (_, i) => i + 1).map((i) => (
-                  <div key={`extracted-${i}`} className="w-[140px] h-[80px] flex items-center justify-center">
+                  <div key={`extracted-${i}`} className="w-[140px] h-[80px] flex items-center justify-center bg-white/5 rounded-lg">
                     <img 
                       src={`/images/logos/logo_${i}.png`}
                       alt="Client Logo"
-                      className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                      className="max-w-full max-h-full object-contain"
                     />
                   </div>
                 ))}
