@@ -208,11 +208,25 @@ export default function Home() {
           <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Trusted By Industry Leaders</p>
         </div>
         <div className="relative flex overflow-x-hidden group">
-          <div className="animate-marquee whitespace-nowrap flex gap-16 items-center">
-            {[...clients, ...clients, ...clients].map((client, i) => (
-              <span key={i} className="text-3xl md:text-5xl font-display font-bold text-gray-300 hover:text-black transition-colors cursor-default">
-                {client}
-              </span>
+          <div className="animate-marquee whitespace-nowrap flex gap-20 items-center" style={{ animationDuration: '20s' }}>
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-20 items-center">
+                {/* Extracted Logos */}
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map((i) => (
+                  <img 
+                    key={`extracted-${i}`}
+                    src={`/images/logos/logo_${i}.png`}
+                    alt="Client Logo"
+                    className="h-12 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                ))}
+                {/* Added Logos */}
+                <img 
+                  src="/images/logos/apple.png" 
+                  alt="Apple" 
+                  className="h-12 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                />
+              </div>
             ))}
           </div>
         </div>
