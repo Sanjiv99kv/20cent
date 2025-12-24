@@ -2,28 +2,31 @@ import Layout from "@/components/Layout";
 import { Code, Video, PenTool, MessageSquare, FileText, MonitorPlay, Rocket } from "lucide-react";
 import FAQ from "@/components/FAQ";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Services() {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: <Code className="w-12 h-12" />,
-      title: "Web Development",
-      description: "We build high-performance websites and web applications. From corporate sites to complex platforms, we ensure scalability, security, and a premium user experience.",
-      features: ["Corporate Websites", "Web Applications", "E-commerce", "CMS Development"],
+      title: t.services.web.title,
+      description: t.services.web.longDesc,
+      features: t.services.web.features,
       image: "/images/services/web-3d.png"
     },
     {
       icon: <Video className="w-12 h-12" />,
-      title: "Video Production",
-      description: "Our video production team creates compelling visual narratives. We handle everything from storyboarding to post-production, delivering broadcast-quality content.",
-      features: ["Commercials", "Brand Movies", "Motion Graphics", "Social Media Content"],
+      title: t.services.video.title,
+      description: t.services.video.longDesc,
+      features: t.services.video.features,
       image: "/images/services/video-3d.png"
     },
     {
       icon: <PenTool className="w-12 h-12" />,
-      title: "Brand Guidelines",
-      description: "We define your brand's visual identity. Our strategic approach ensures your brand is distinctive, memorable, and legally protected through trademark support.",
-      features: ["Logo Design", "Visual Identity Systems", "Trademark Support", "Brand Strategy"],
+      title: t.services.branding.title,
+      description: t.services.branding.longDesc,
+      features: t.services.branding.features,
       image: "/images/services/branding-3d.png"
     }
   ];
@@ -32,26 +35,34 @@ export default function Services() {
     {
       step: "01",
       icon: <MessageSquare className="w-8 h-8" />,
-      title: "Inquiry",
-      description: "Contact us via our form, email, or phone. We'll discuss your initial requirements and schedule a consultation."
+      title: t.services.process.steps[0].title,
+      description: t.services.process.steps[0].desc,
+      details: t.services.process.steps[0].details,
+      image: "/images/flow/inquiry-3d.png"
     },
     {
       step: "02",
       icon: <FileText className="w-8 h-8" />,
-      title: "Quotation",
-      description: "After detailed hearings, we propose the optimal service plan and budget tailored to your specific needs."
+      title: t.services.process.steps[1].title,
+      description: t.services.process.steps[1].desc,
+      details: t.services.process.steps[1].details,
+      image: "/images/flow/quote-3d.png"
     },
     {
       step: "03",
       icon: <MonitorPlay className="w-8 h-8" />,
-      title: "Demo Production",
-      description: "We create a simple demo, storyboard, or prototype to visualize the direction before full production begins."
+      title: t.services.process.steps[2].title,
+      description: t.services.process.steps[2].desc,
+      details: t.services.process.steps[2].details,
+      image: "/images/flow/demo-3d.png"
     },
     {
       step: "04",
       icon: <Rocket className="w-8 h-8" />,
-      title: "Service Start",
-      description: "Our expert team takes over the project, delivering high-quality results while maintaining flexible communication."
+      title: t.services.process.steps[3].title,
+      description: t.services.process.steps[3].desc,
+      details: t.services.process.steps[3].details,
+      image: "/images/flow/start-3d.png"
     }
   ];
 
@@ -67,7 +78,7 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="font-display font-bold text-6xl md:text-8xl mb-8 tracking-tighter"
           >
-            Our Services
+            {t.services.hero.title}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +86,7 @@ export default function Services() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-gray-400 max-w-2xl leading-relaxed"
           >
-            We offer a comprehensive suite of creative services, optimized by our unique "AI × Human" workflow to deliver premium quality with efficiency.
+            {t.services.hero.description}
           </motion.p>
         </div>
       </section>
@@ -194,7 +205,7 @@ export default function Services() {
               transition={{ duration: 0.5 }}
               className="text-sm font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase mb-4 block"
             >
-              Our Process
+              {t.services.process.title}
             </motion.span>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -202,7 +213,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-4xl md:text-5xl mb-6"
             >
-              Proposal Flow
+              {t.services.process.subtitle}
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -210,7 +221,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-muted-foreground max-w-2xl mx-auto"
             >
-              A streamlined, transparent journey from your initial vision to the final premium delivery.
+              {t.services.process.description}
             </motion.p>
           </div>
 
@@ -221,36 +232,7 @@ export default function Services() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
-              {[
-                {
-                  step: "01",
-                  title: "Inquiry",
-                  desc: "Reach out via our contact form or email. We'll schedule an initial consultation to understand your vision, goals, and technical requirements.",
-                  details: ["Initial Consultation", "Requirement Definition", "Feasibility Check"],
-                  image: "/images/flow/inquiry-3d.png"
-                },
-                {
-                  step: "02",
-                  title: "Quotation",
-                  desc: "Based on our discussion, we provide a comprehensive proposal including a detailed timeline, cost breakdown, and strategic roadmap.",
-                  details: ["Strategic Roadmap", "Cost Breakdown", "Scope Definition"],
-                  image: "/images/flow/quote-3d.png"
-                },
-                {
-                  step: "03",
-                  title: "Demo Production",
-                  desc: "We create a high-fidelity prototype or storyboard. This ensures our creative direction aligns perfectly with your expectations before full production.",
-                  details: ["UI/UX Prototyping", "Visual Direction", "Feedback Loop"],
-                  image: "/images/flow/demo-3d.png"
-                },
-                {
-                  step: "04",
-                  title: "Service Start",
-                  desc: "Official project kickoff. Our dedicated team begins the full-scale production, maintaining transparent communication throughout the lifecycle.",
-                  details: ["Kickoff Meeting", "Agile Development", "Regular Updates"],
-                  image: "/images/flow/start-3d.png"
-                }
-              ].map((item, i) => (
+              {process.map((item, i) => (
                 <motion.div 
                   key={i} 
                   initial={{ opacity: 0, y: 30 }}
@@ -289,7 +271,7 @@ export default function Services() {
                     </h3>
                     
                     <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                      {item.desc}
+                      {item.description}
                     </p>
 
                     {/* Details List */}

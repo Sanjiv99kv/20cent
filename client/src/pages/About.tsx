@@ -3,8 +3,11 @@ import Layout from "@/components/Layout";
 import { ArrowRight, Cpu, Heart, Zap, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -25,8 +28,7 @@ export default function About() {
                 transition={{ duration: 1 }}
                 className="font-display font-bold text-6xl md:text-9xl tracking-tighter mb-8"
             >
-                Beyond <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Boundaries.</span>
+                {t.aboutPage.hero.title}
             </motion.h1>
             <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -34,7 +36,7 @@ export default function About() {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             >
-                We are the architects of the new digital era, fusing algorithmic precision with human intuition to build experiences that matter.
+                {t.aboutPage.hero.subtitle}
             </motion.p>
         </div>
       </section>
@@ -105,17 +107,8 @@ export default function About() {
               viewport={{ once: true }}
               className="font-display font-bold text-5xl md:text-7xl mb-6"
             >
-              Our Core Values
+              {t.aboutPage.values.title}
             </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-gray-400 text-xl max-w-2xl mx-auto"
-            >
-              The principles that guide every pixel we place and every line of code we write.
-            </motion.p>
           </div>
 
           <div className="space-y-40">
@@ -154,9 +147,9 @@ export default function About() {
                     </div>
                     <span className="text-blue-400 font-bold tracking-widest uppercase text-sm">Speed & Precision</span>
                 </div>
-                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Radical <br/>Efficiency</h3>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">{t.aboutPage.values.efficiency.title}</h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-8">
-                  We don't just work fast; we work smart. By leveraging custom AI workflows, we reduce production time by up to <span className="text-white font-bold">40%</span>, allowing us to iterate more and deliver faster without compromising quality.
+                  {t.aboutPage.values.efficiency.desc}
                 </p>
                 <ul className="space-y-4">
                     {['Automated Asset Generation', 'Rapid Prototyping', 'Scalable Code Architecture'].map((item, i) => (
@@ -203,9 +196,9 @@ export default function About() {
                     </div>
                     <span className="text-purple-400 font-bold tracking-widest uppercase text-sm">Borderless Thinking</span>
                 </div>
-                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Global <br/>Perspective</h3>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">{t.aboutPage.values.global.title}</h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-8">
-                  Based in Tokyo but thinking globally. Our team comprises diverse talents who understand cross-cultural nuances, ensuring your brand resonates across borders.
+                  {t.aboutPage.values.global.desc}
                 </p>
                 <ul className="space-y-4">
                     {['Cross-Cultural Design', 'Multi-Language Support', 'International Market Strategy'].map((item, i) => (
@@ -252,9 +245,9 @@ export default function About() {
                     </div>
                     <span className="text-pink-400 font-bold tracking-widest uppercase text-sm">Future Ready</span>
                 </div>
-                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Continuous <br/>Innovation</h3>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">{t.aboutPage.values.innovation.title}</h3>
                 <p className="text-xl text-gray-400 leading-relaxed mb-8">
-                  We don't just follow trends; we set them. By constantly experimenting with emerging technologies, we ensure your digital presence is always ahead of the curve.
+                  {t.aboutPage.values.innovation.desc}
                 </p>
                 <ul className="space-y-4">
                     {['R&D Labs', 'Next-Gen Tech Stack', 'Creative Experimentation'].map((item, i) => (
@@ -296,19 +289,19 @@ export default function About() {
                     {/* Left Column: Identity */}
                     <div className="w-full md:w-1/2 space-y-10">
                         <div>
-                            <h2 className="font-display font-bold text-4xl md:text-5xl mb-2 text-white">Company Profile</h2>
+                            <h2 className="font-display font-bold text-4xl md:text-5xl mb-2 text-white">{t.aboutPage.profile.title}</h2>
                             <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                         </div>
                         
                         <div className="space-y-2">
-                            <h4 className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em]">Company Name</h4>
+                            <h4 className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em]">{t.aboutPage.profile.name}</h4>
                             <p className="text-2xl font-medium text-white">20cent Inc. <span className="text-gray-500 text-lg font-normal">(株式会社20cent)</span></p>
                         </div>
 
                         <div className="space-y-2">
-                            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-[0.2em]">Services</h4>
+                            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-[0.2em]">{t.aboutPage.profile.business}</h4>
                             <ul className="grid grid-cols-2 gap-3">
-                                {['Web Development', 'Video Production', 'Brand Guidelines', 'AI Consulting'].map((service) => (
+                                {[t.services.web.title, t.services.video.title, t.services.branding.title, 'AI Consulting'].map((service) => (
                                     <li key={service} className="flex items-center gap-2 text-gray-300 text-sm">
                                         <div className="w-1 h-1 bg-white rounded-full" />
                                         {service}
@@ -324,7 +317,7 @@ export default function About() {
                         <div className="hidden md:block absolute left-[-2rem] top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
 
                         <div className="space-y-4">
-                            <h4 className="text-xs font-bold text-pink-400 uppercase tracking-[0.2em]">Location</h4>
+                            <h4 className="text-xs font-bold text-pink-400 uppercase tracking-[0.2em]">{t.aboutPage.profile.location}</h4>
                             <a 
                                 href="https://maps.google.com/?q=1-1-17+LANTIQUE105,+Nakameguro,+Meguro-ku,+Tokyo" 
                                 target="_blank" 
@@ -343,7 +336,7 @@ export default function About() {
                         </div>
 
                         <div className="space-y-4">
-                            <h4 className="text-xs font-bold text-green-400 uppercase tracking-[0.2em]">Contact</h4>
+                            <h4 className="text-xs font-bold text-green-400 uppercase tracking-[0.2em]">{t.contact.title}</h4>
                             <a 
                                 href="mailto:info@20cent-jp.com" 
                                 className="inline-flex items-center gap-3 text-2xl font-medium text-white hover:text-green-300 transition-colors border-b border-white/20 hover:border-green-300 pb-1"

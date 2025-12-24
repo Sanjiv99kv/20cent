@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import Layout from "@/components/Layout";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { projects, Category } from "@/data/projects";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Work() {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<Category>("All");
 
   const filteredProjects = activeCategory === "All" 
@@ -19,10 +21,10 @@ export default function Work() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div>
             <h1 className="font-display font-bold text-6xl md:text-8xl mb-6 tracking-tighter">
-              Selected Work
+              {t.work.title}
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              A curated portfolio of high-impact digital experiences where technical precision meets artistic vision to define the future of brands.
+              {t.work.description}
             </p>
           </div>
           
@@ -40,7 +42,8 @@ export default function Work() {
                     : "hover:bg-secondary hover:scale-105"
                 )}
               >
-                {cat}
+                {/* @ts-ignore */}
+                {t.work.filter[cat.toLowerCase()]}
               </Button>
             ))}
           </div>
@@ -79,7 +82,7 @@ export default function Work() {
                       {project.description}
                     </p>
                     <div className="flex items-center gap-2 text-white font-bold group/btn">
-                      <span className="border-b border-white/30 pb-1 group-hover/btn:border-white transition-colors">View Case Study</span>
+                      <span className="border-b border-white/30 pb-1 group-hover/btn:border-white transition-colors">{t.work.viewProject}</span>
                       <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                     </div>
                   </div>

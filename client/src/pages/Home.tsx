@@ -4,10 +4,12 @@ import { ArrowRight, Play, Code, PenTool, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import { cn } from "@/lib/utils";
 
 export default function Home() {
+  const { t } = useLanguage();
   const heroRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
   
@@ -158,9 +160,9 @@ export default function Home() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="font-display font-bold text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8"
             >
-              Integrated <br />
+              {t.hero.title} <br />
               <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-[length:200%_auto] animate-gradient">Creative Studio.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-[length:200%_auto] animate-gradient">{t.hero.subtitle}</span>
                 <span className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 opacity-30 blur-lg animate-pulse" />
               </span>
             </motion.h1>
@@ -170,7 +172,7 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
               className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
             >
-              Optimizing the boundary between AI efficiency and human creativity to deliver premium digital experiences.
+              {t.hero.description}
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -180,12 +182,12 @@ export default function Home() {
             >
               <Link href="/work">
                 <Button size="lg" className="rounded-full px-8 text-lg h-14 bg-black text-white hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                  View Our Work
+                  {t.hero.viewWork}
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button variant="outline" size="lg" className="rounded-full px-8 text-lg h-14 border-black hover:bg-gray-100 transition-all duration-300">
-                  Contact Us
+                  {t.hero.contactUs}
                 </Button>
               </Link>
             </motion.div>
@@ -205,7 +207,7 @@ export default function Home() {
       {/* Client Ticker */}
       <section className="py-12 border-y border-border bg-secondary/30 overflow-hidden">
         <div className="container mb-6">
-          <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">Trusted By Industry Leaders</p>
+          <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t.ticker.trustedBy}</p>
         </div>
         <div className="relative flex overflow-x-hidden group">
           <div className="animate-marquee whitespace-nowrap flex gap-32 items-center" style={{ animationDuration: '30s' }}>
@@ -286,21 +288,21 @@ export default function Home() {
             className="space-y-8"
           >
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight">
-              AI × Human <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Optimization</span>
+              {t.about.title} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{t.about.subtitle}</span>
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                We are an "Integrated Creative Studio" that draws a clear line between areas where AI can save labor and areas where human creativity is essential.
+                {t.about.p1}
               </p>
               <p>
-                By establishing unique rules to separate these domains, we eliminate unnecessary work while delivering high-quality creative tailored to your needs.
+                {t.about.p2}
               </p>
             </div>
             <div className="pt-4">
               <Link href="/about">
                 <a className="group flex items-center gap-2 font-bold text-lg hover:gap-4 transition-all">
-                  Read our philosophy <ArrowRight className="w-5 h-5 group-hover:text-blue-500 transition-colors" />
+                  {t.about.readPhilosophy} <ArrowRight className="w-5 h-5 group-hover:text-blue-500 transition-colors" />
                 </a>
               </Link>
             </div>
@@ -314,9 +316,9 @@ export default function Home() {
         
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/20 pb-8">
-            <h2 className="font-display font-bold text-5xl md:text-7xl">Services</h2>
+            <h2 className="font-display font-bold text-5xl md:text-7xl">{t.services.title}</h2>
             <p className="text-gray-400 max-w-md text-right mt-4 md:mt-0">
-              Comprehensive creative solutions for modern brands.
+              {t.services.subtitle}
             </p>
           </div>
 
@@ -325,9 +327,9 @@ export default function Home() {
             <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               <Code className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">Web Development</h3>
+              <h3 className="font-display font-bold text-2xl mb-4">{t.services.web.title}</h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                High-performance websites and web applications built with cutting-edge technology.
+                {t.services.web.desc}
               </p>
               <img 
                 src="/images/service-web.png" 
@@ -340,9 +342,9 @@ export default function Home() {
             <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               <Play className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">Video Production</h3>
+              <h3 className="font-display font-bold text-2xl mb-4">{t.services.video.title}</h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Commercials, promotional content, and motion graphics that capture attention.
+                {t.services.video.desc}
               </p>
               <img 
                 src="/images/service-video.png" 
@@ -355,9 +357,9 @@ export default function Home() {
             <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               <PenTool className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">Brand Guidelines</h3>
+              <h3 className="font-display font-bold text-2xl mb-4">{t.services.branding.title}</h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Strategic logo design, trademark support, and comprehensive brand identity systems.
+                {t.services.branding.desc}
               </p>
               <img 
                 src="/images/service-branding.png" 
@@ -373,14 +375,14 @@ export default function Home() {
       <section className="py-32 bg-background text-center">
         <div className="container max-w-3xl">
           <h2 className="font-display font-bold text-5xl md:text-6xl mb-8 tracking-tight">
-            Ready to elevate your brand?
+            {t.cta.title}
           </h2>
           <p className="text-xl text-muted-foreground mb-12">
-            Let's discuss how our AI × Human approach can transform your digital presence.
+            {t.cta.desc}
           </p>
           <Link href="/contact">
             <Button size="lg" className="rounded-full px-12 py-8 text-xl bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 hover:opacity-90 transition-opacity border-0">
-              Start a Project
+              {t.cta.button}
             </Button>
           </Link>
         </div>

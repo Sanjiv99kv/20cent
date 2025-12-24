@@ -4,12 +4,13 @@ import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const [lang, setLang] = useState<"en" | "ja">("en");
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,14 +27,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [location]);
 
   const toggleLang = () => {
-    setLang(prev => prev === "en" ? "ja" : "en");
+    setLanguage(language === "en" ? "ja" : "en");
   };
 
   const navLinks = [
-    { name: lang === "en" ? "Work" : "実績", href: "/work" },
-    { name: lang === "en" ? "Services" : "サービス", href: "/services" },
-    { name: lang === "en" ? "About" : "会社概要", href: "/about" },
-    { name: lang === "en" ? "Contact" : "お問い合わせ", href: "/contact" },
+    { name: t.nav.work, href: "/work" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.about, href: "/about" },
+    { name: t.nav.contact, href: "/contact" },
   ];
 
   return (
@@ -76,7 +77,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="ml-4 rounded-full border border-border hover:bg-secondary transition-colors"
             >
               <Globe className="w-4 h-4 mr-2" />
-              {lang === "en" ? "EN" : "JP"}
+              {t.nav.langCode}
             </Button>
           </nav>
 
@@ -113,7 +114,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className="mt-8 rounded-full"
           >
             <Globe className="w-4 h-4 mr-2" />
-            {lang === "en" ? "Switch to Japanese" : "英語に切り替え"}
+            {t.nav.switchLang}
           </Button>
         </nav>
       </div>
@@ -134,7 +135,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Logo color="white" />
             </div>
             <p className="text-gray-400 max-w-md leading-relaxed">
-              An integrated creative studio optimizing the boundary between AI efficiency and human creativity.
+              {t.footer.description}
             </p>
             <div className="flex gap-4 pt-4">
               {/* Social placeholders */}
@@ -150,17 +151,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display font-bold text-lg">Sitemap</h4>
+            <h4 className="font-display font-bold text-lg">{t.footer.sitemap}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><Link href="/work"><a className="hover:text-white transition-colors">Work</a></Link></li>
-              <li><Link href="/services"><a className="hover:text-white transition-colors">Services</a></Link></li>
-              <li><Link href="/about"><a className="hover:text-white transition-colors">About</a></Link></li>
-              <li><Link href="/contact"><a className="hover:text-white transition-colors">Contact</a></Link></li>
+              <li><Link href="/work"><a className="hover:text-white transition-colors">{t.nav.work}</a></Link></li>
+              <li><Link href="/services"><a className="hover:text-white transition-colors">{t.nav.services}</a></Link></li>
+              <li><Link href="/about"><a className="hover:text-white transition-colors">{t.nav.about}</a></Link></li>
+              <li><Link href="/contact"><a className="hover:text-white transition-colors">{t.nav.contact}</a></Link></li>
             </ul>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display font-bold text-lg">Contact</h4>
+            <h4 className="font-display font-bold text-lg">{t.footer.contact}</h4>
             <address className="not-italic text-gray-400 space-y-2">
               <p>1-1-17 LANTIQUE105</p>
               <p>Nakameguro, Meguro-ku</p>
@@ -171,10 +172,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="container mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-          <p>&copy; {new Date().getFullYear()} 20cent Inc. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} 20cent Inc. {t.footer.rights}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </footer>
