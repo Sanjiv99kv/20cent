@@ -22,7 +22,7 @@ export default function Work() {
               Selected Work
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl">
-              A collection of projects where we've applied our AI × Human philosophy to deliver exceptional results.
+              A curated portfolio of high-impact digital experiences where technical precision meets artistic vision to define the future of brands.
             </p>
           </div>
           
