@@ -193,14 +193,13 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="relative">
-            {/* Connecting Line Background */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 hidden md:block" />
-            
-            {/* Animated Progress Line */}
-            <div className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent -translate-y-1/2 hidden md:block w-0 animate-scroll-line" />
+          <div className="relative max-w-6xl mx-auto">
+            {/* Connecting Line Background (Desktop) */}
+            <div className="absolute top-[140px] left-0 w-full h-2 bg-border/30 rounded-full hidden md:block overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/20 to-transparent w-1/2 animate-marquee" />
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
               {[
                 {
                   step: "01",
@@ -227,35 +226,46 @@ export default function Services() {
                   image: "/images/flow/start-3d.png"
                 }
               ].map((item, i) => (
-                <div key={i} className="group relative">
-                  {/* Step Number */}
-                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-8xl font-bold text-muted-foreground/5 select-none group-hover:text-accent/10 transition-colors duration-500">
-                    {item.step}
+                <div key={i} className="group relative flex flex-col items-center">
+                  
+                  {/* 3D Icon Container - Perfectly Aligned */}
+                  <div className="relative w-40 h-40 mb-12 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-accent/10 blur-3xl rounded-full opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                    
+                    {/* Connector Dot on Line */}
+                    <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-background border-4 border-accent rounded-full z-0 hidden md:block shadow-[0_0_15px_rgba(0,0,0,0.1)] group-hover:scale-150 transition-transform duration-300" />
+
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-contain drop-shadow-2xl relative z-10"
+                    />
                   </div>
 
-                  {/* Card */}
-                  <div className="relative bg-background/50 backdrop-blur-sm rounded-2xl p-8 border border-border/50 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/5 text-center h-full flex flex-col items-center">
+                  {/* Content Card - Symmetrical Height */}
+                  <div className="w-full bg-background rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl hover:border-accent/30 transition-all duration-300 flex flex-col items-center text-center h-[280px] relative overflow-hidden group-hover:-translate-y-1">
                     
-                    {/* 3D Icon */}
-                    <div className="relative w-32 h-32 mb-8 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                      <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-full object-contain drop-shadow-xl relative z-10"
-                      />
+                    {/* Step Number Watermark */}
+                    <div className="absolute -top-4 -right-4 text-8xl font-bold text-muted-foreground/5 select-none group-hover:text-accent/5 transition-colors duration-500 font-display">
+                      {item.step}
                     </div>
 
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-accent transition-colors duration-300">
+                    <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-accent transition-colors duration-300 relative z-10">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    
+                    <div className="w-12 h-1 bg-accent/20 rounded-full mb-6 group-hover:w-24 group-hover:bg-accent transition-all duration-500" />
+
+                    <p className="text-muted-foreground leading-relaxed relative z-10">
                       {item.desc}
                     </p>
-
-                    {/* Connector Dot (Mobile Only) */}
-                    <div className="md:hidden absolute bottom-[-3rem] left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-b from-border to-transparent last:hidden" />
                   </div>
+
+                  {/* Mobile Connector Line */}
+                  {i !== 3 && (
+                    <div className="md:hidden w-1 h-12 bg-gradient-to-b from-border to-transparent my-4" />
+                  )}
                 </div>
               ))}
             </div>
