@@ -210,16 +210,16 @@ export default function Home() {
           <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t.ticker.trustedBy}</p>
         </div>
         <div className="relative flex overflow-x-hidden group">
-          <div className="animate-marquee whitespace-nowrap flex gap-20 items-center" style={{ animationDuration: '20s' }}>
+          <div className="animate-marquee whitespace-nowrap flex gap-24 items-center" style={{ animationDuration: '40s' }}>
             {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-20 items-center">
+              <div key={setIndex} className="flex gap-24 items-center">
                 {/* Extracted Logos */}
-                {Array.from({ length: 24 }, (_, i) => i + 1).map((i) => (
-                  <div key={`extracted-${i}`} className="min-w-[100px] flex justify-center">
+                {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => (
+                  <div key={`extracted-${i}`} className="w-[140px] h-[80px] flex items-center justify-center">
                     <img 
                       src={`/images/logos/logo_${i}.png`}
                       alt="Client Logo"
-                      className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                      className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
                     />
                   </div>
                 ))}
