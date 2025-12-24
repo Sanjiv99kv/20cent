@@ -1,11 +1,18 @@
-# Website Update Tasks - Work Section
+# Website Update Tasks - Detail Pages & Hero Restore
 
-- [ ] **Asset Extraction**
-    - [ ] Extract "EveryX" branding image from PDF Page 4.
-    - [ ] Extract client logo grid from PDF Page 5.
-    - [ ] Save images to `client/public/images/`.
+- [ ] **Hero Restoration**
+    - [ ] Revert `Home.tsx` hero section to use `hero-abstract.png` with parallax.
+    - [ ] Remove `Prism3D` component usage from Home.
+
+- [ ] **Project Data**
+    - [ ] Create `client/src/data/projects.ts` to store project data centrally.
+    - [ ] Populate data with exact text extracted from screenshots (need to read text from images manually/visually).
+
+- [ ] **Project Detail Page**
+    - [ ] Create `client/src/pages/ProjectDetail.tsx`.
+    - [ ] Implement routing in `App.tsx` for `/work/:id`.
+    - [ ] Design detail page layout (Hero image, Title, Client, Description, Credits/Tags).
 
 - [ ] **Work Page Update**
-    - [ ] Replace generic project cards with "EveryX" case study using the extracted image.
-    - [ ] Create a "Client List" section displaying the extracted logo grid.
-    - [ ] Ensure text matches PDF: "Brand Guidelines" for EveryX, and list all clients (Money Forward, Mitsui Fudosan, Vector, etc.).
+    - [ ] Update `Work.tsx` to use shared data from `projects.ts`.
+    - [ ] Change project card click behavior to navigate to `/work/:id`.

@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Play, Code, PenTool, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import Prism3D from "@/components/Prism3D";
+
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -27,14 +27,18 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden bg-black text-white">
-        {/* 3D Background */}
-        <div className="absolute inset-0 z-0 opacity-60">
-          <Prism3D />
+      <section className="relative h-[90vh] flex items-center overflow-hidden">
+        <div 
+          ref={heroRef}
+          className="absolute inset-0 z-0"
+        >
+          <img 
+            src="/images/hero-abstract.png" 
+            alt="Abstract Prism" 
+            className="w-full h-full object-cover opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-background" />
         </div>
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-background z-0" />
 
         <div className="container relative z-10 pt-20">
           <div className="max-w-4xl">
