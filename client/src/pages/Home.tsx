@@ -230,74 +230,111 @@ export default function Home() {
       </section>
 
       {/* About / Philosophy Section */}
-      <section className="py-32 bg-background relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gradient-to-r from-red-500/5 to-blue-500/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-        
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative group"
-          >
-            {/* Animated Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-700 animate-pulse-slow" />
-            
-            {/* Floating Elements */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg shadow-xl hidden md:block"
-            >
-              <Code className="w-6 h-6 text-blue-400" />
-            </motion.div>
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-6 -left-6 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg shadow-xl hidden md:block"
-            >
-              <PenTool className="w-6 h-6 text-pink-400" />
-            </motion.div>
+      <section className="py-32 bg-black relative overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/about-bg-abstract.jpg" 
+            alt="Abstract Background" 
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+        </div>
 
-            <div className="relative rounded-xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02]">
-              <img 
-                src="/images/ai-human-fusion.png" 
-                alt="AI x Human Fusion" 
-                className="w-full aspect-square object-cover transition-all duration-700"
-              />
-              {/* Interactive Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-          </motion.div>
-
+        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          {/* Text Content */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-10"
           >
-            <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight">
-              {t.about.title} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{t.about.subtitle}</span>
-            </h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-              <p>
+            <div className="space-y-4">
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: "100px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="h-1 bg-gradient-to-r from-blue-500 to-purple-500"
+              />
+              <h2 className="font-display font-bold text-5xl md:text-7xl tracking-tight text-white leading-tight">
+                {t.about.title} <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+                  {t.about.subtitle}
+                </span>
+              </h2>
+            </div>
+
+            <div className="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-light">
+              <p className="backdrop-blur-sm bg-black/30 p-6 rounded-2xl border border-white/10 shadow-xl hover:border-white/20 transition-colors duration-300">
                 {t.about.p1}
               </p>
-              <p>
+              <p className="backdrop-blur-sm bg-black/30 p-6 rounded-2xl border border-white/10 shadow-xl hover:border-white/20 transition-colors duration-300 delay-100">
                 {t.about.p2}
               </p>
             </div>
-            <div className="pt-4">
+
+            <div className="pt-6">
               <Link href="/about">
-                <a className="group flex items-center gap-2 font-bold text-lg hover:gap-4 transition-all">
-                  {t.about.readPhilosophy} <ArrowRight className="w-5 h-5 group-hover:text-blue-500 transition-colors" />
+                <a className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                  {t.about.readPhilosophy} 
+                  <ArrowRight className="w-5 h-5" />
                 </a>
               </Link>
             </div>
+          </motion.div>
+
+          {/* Visual Element */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative z-10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
+              <img 
+                src="/images/about-bg-abstract.jpg" 
+                alt="Creative Fusion" 
+                className="w-full h-[600px] object-cover transform transition-transform duration-1000 group-hover:scale-110"
+              />
+              
+              {/* Floating Cards */}
+              <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-10 right-10 z-30 bg-black/60 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl max-w-[200px]"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-3 h-3 rounded-full bg-red-500" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <div className="space-y-2">
+                  <div className="h-2 bg-white/20 rounded w-3/4" />
+                  <div className="h-2 bg-white/20 rounded w-1/2" />
+                </div>
+              </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, 20, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-20 left-10 z-30 bg-black/60 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-2xl flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                  <Code className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="text-white font-bold">AI Powered</div>
+                  <div className="text-gray-400 text-sm">Efficiency</div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Background Glow */}
+            <div className="absolute -inset-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full opacity-20 blur-3xl -z-10 animate-pulse-slow" />
           </motion.div>
         </div>
       </section>
