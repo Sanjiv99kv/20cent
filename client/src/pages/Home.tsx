@@ -43,7 +43,10 @@ export default function Home() {
           <div className="max-w-4xl">
             <h1 className="font-display font-bold text-6xl md:text-8xl tracking-tighter leading-[0.9] mb-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
               Integrated <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500">Creative Studio.</span>
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500">Creative Studio.</span>
+                <span className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 opacity-30 blur-lg animate-pulse" />
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
               Optimizing the boundary between AI efficiency and human creativity to deliver premium digital experiences.
@@ -85,15 +88,21 @@ export default function Home() {
       </section>
 
       {/* About / Philosophy Section */}
-      <section className="py-32 bg-background relative">
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-blue-500 rounded-2xl opacity-20 blur-2xl" />
-            <img 
-              src="/images/about-studio.png" 
-              alt="Studio Interior" 
-              className="relative rounded-xl shadow-2xl w-full aspect-[4/3] object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            />
+      <section className="py-32 bg-background relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gradient-to-r from-red-500/5 to-blue-500/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+        
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 rounded-2xl opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-700" />
+            <div className="relative rounded-xl overflow-hidden">
+              <img 
+                src="/images/about-studio.png" 
+                alt="Studio Interior" 
+                className="w-full aspect-[4/3] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
           </div>
           <div className="space-y-8">
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight">

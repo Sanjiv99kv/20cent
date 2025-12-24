@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 import { cn } from "@/lib/utils";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -51,9 +52,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Logo */}
           <Link href="/">
             <a className="group flex items-center gap-2 z-50 relative">
-              <div className="font-display font-bold text-2xl tracking-tighter">
-                Twenty Cents<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500">.</span>
-              </div>
+              <Logo />
             </a>
           </Link>
 
@@ -131,8 +130,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         
         <div className="container grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
           <div className="md:col-span-2 space-y-6">
-            <div className="font-display font-bold text-3xl tracking-tighter">
-              Twenty Cents<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-blue-500">.</span>
+            <div className="text-white">
+              <Logo className="text-white [&_span]:text-white" />
             </div>
             <p className="text-gray-400 max-w-md leading-relaxed">
               An integrated creative studio optimizing the boundary between AI efficiency and human creativity.
