@@ -1,10 +1,11 @@
-# Website Update Tasks - Services Upgrade
+# Website Update Tasks - Proposal Flow Upgrade
 
 - [ ] **Generate 3D Assets**
-    - [ ] Generate abstract 3D image for "Web Development" (structure, code, digital).
-    - [ ] Generate abstract 3D image for "Video Production" (motion, light, cinematic).
-    - [ ] Generate abstract 3D image for "Brand Guidelines" (geometry, prism, structure).
-- [ ] **Redesign Services Page**
-    - [ ] Implement alternating layout with large 3D visuals.
-    - [ ] Add floating/parallax effects to images.
-    - [ ] Add scroll-triggered text reveals.
+    - [ ] Generate 3D icon for "Inquiry" (speech bubble, connection).
+    - [ ] Generate 3D icon for "Quotation" (document, calculation).
+    - [ ] Generate 3D icon for "Demo Production" (play button, screen).
+    - [ ] Generate 3D icon for "Service Start" (rocket, launch).
+- [ ] **Redesign Proposal Flow**
+    - [ ] Implement horizontal timeline layout.
+    - [ ] Add connecting line animation (SVG path drawing).
+    - [ ] Add hover effects for each step.

@@ -183,41 +183,82 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Flow */}
-      <section className="py-32 bg-secondary/30 border-t border-border">
-        <div className="container">
-          <div className="text-center mb-20">
+      {/* Proposal Flow */}
+      <section className="py-32 bg-secondary/30 overflow-hidden">
+        <div className="container relative">
+          <div className="text-center mb-24">
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Proposal Flow</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              A streamlined process designed to get your project moving quickly and efficiently.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              A streamlined process designed to move from concept to execution with precision and clarity.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-border z-0" />
+          <div className="relative">
+            {/* Connecting Line Background */}
+            <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 hidden md:block" />
+            
+            {/* Animated Progress Line */}
+            <div className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent -translate-y-1/2 hidden md:block w-0 animate-scroll-line" />
 
-            {process.map((step, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative z-10 bg-background p-8 rounded-2xl border border-border shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
-              >
-                <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center text-2xl font-bold mb-6 mx-auto border-4 border-background relative group">
-                  {step.step}
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary border-2 border-background group-hover:scale-110 transition-transform">
-                    {step.icon}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+              {[
+                {
+                  step: "01",
+                  title: "Inquiry",
+                  desc: "Contact us via form or email to discuss your vision.",
+                  image: "/images/flow/inquiry-3d.png"
+                },
+                {
+                  step: "02",
+                  title: "Quotation",
+                  desc: "We analyze requirements and provide a detailed estimate.",
+                  image: "/images/flow/quote-3d.png"
+                },
+                {
+                  step: "03",
+                  title: "Demo Production",
+                  desc: "We create a high-fidelity prototype to visualize the outcome.",
+                  image: "/images/flow/demo-3d.png"
+                },
+                {
+                  step: "04",
+                  title: "Service Start",
+                  desc: "Official kickoff with a dedicated team and roadmap.",
+                  image: "/images/flow/start-3d.png"
+                }
+              ].map((item, i) => (
+                <div key={i} className="group relative">
+                  {/* Step Number */}
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-8xl font-bold text-muted-foreground/5 select-none group-hover:text-accent/10 transition-colors duration-500">
+                    {item.step}
+                  </div>
+
+                  {/* Card */}
+                  <div className="relative bg-background/50 backdrop-blur-sm rounded-2xl p-8 border border-border/50 hover:border-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/5 text-center h-full flex flex-col items-center">
+                    
+                    {/* 3D Icon */}
+                    <div className="relative w-32 h-32 mb-8 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                      <div className="absolute inset-0 bg-accent/20 blur-3xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-full object-contain drop-shadow-xl relative z-10"
+                      />
+                    </div>
+
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-accent transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.desc}
+                    </p>
+
+                    {/* Connector Dot (Mobile Only) */}
+                    <div className="md:hidden absolute bottom-[-3rem] left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-b from-border to-transparent last:hidden" />
                   </div>
                 </div>
-                <h3 className="font-display font-bold text-xl text-center mb-4">{step.title}</h3>
-                <p className="text-sm text-muted-foreground text-center leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

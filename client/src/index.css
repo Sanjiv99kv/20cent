@@ -19,6 +19,11 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+
+  @keyframes scroll-line {
+    from { width: 0; }
+    to { width: 100%; }
+  }
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -215,4 +220,9 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+}
+.animate-scroll-line {
+  animation: scroll-line 1.5s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 50%;
 }
