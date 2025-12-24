@@ -31,6 +31,22 @@ export default function Home() {
       <section className="relative h-[90vh] flex items-center overflow-hidden bg-background">
         {/* Dynamic Background Effects */}
         <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Light Refraction Animation */}
+          <div className="absolute inset-0 pointer-events-none z-10 mix-blend-overlay">
+            {/* Input Beam (White Light) */}
+            <div className="absolute top-1/2 left-0 w-1/2 h-2 bg-white blur-md origin-left animate-beam" 
+                 style={{ transform: 'translateY(-50%) rotate(-15deg)', top: '60%' }} />
+            
+            {/* Output Spectrum (Rainbow) */}
+            <div className="absolute top-1/2 left-1/2 w-full h-[400px] origin-left animate-spectrum opacity-0"
+                 style={{ 
+                   background: 'conic-gradient(from 270deg at 0% 50%, rgba(255,0,0,0.5), rgba(255,165,0,0.5), rgba(0,128,0,0.5), rgba(0,0,255,0.5), rgba(128,0,128,0.5))',
+                   transform: 'translateY(-50%) rotate(-15deg)',
+                   top: '60%',
+                   filter: 'blur(40px)'
+                 }} />
+          </div>
+
           {/* Animated Gradient Orbs */}
           <motion.div 
             animate={{ 
