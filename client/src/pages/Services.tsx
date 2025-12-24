@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import { Code, Video, PenTool, MessageSquare, FileText, MonitorPlay, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Services() {
   const services = [
@@ -7,19 +8,22 @@ export default function Services() {
       icon: <Code className="w-12 h-12" />,
       title: "Web Development",
       description: "We build high-performance websites and web applications. From corporate sites to complex platforms, we ensure scalability, security, and a premium user experience.",
-      features: ["Corporate Websites", "Web Applications", "E-commerce", "CMS Development"]
+      features: ["Corporate Websites", "Web Applications", "E-commerce", "CMS Development"],
+      image: "/images/services/web-3d.png"
     },
     {
       icon: <Video className="w-12 h-12" />,
       title: "Video Production",
       description: "Our video production team creates compelling visual narratives. We handle everything from storyboarding to post-production, delivering broadcast-quality content.",
-      features: ["Commercials", "Brand Movies", "Motion Graphics", "Social Media Content"]
+      features: ["Commercials", "Brand Movies", "Motion Graphics", "Social Media Content"],
+      image: "/images/services/video-3d.png"
     },
     {
       icon: <PenTool className="w-12 h-12" />,
       title: "Brand Guidelines",
       description: "We define your brand's visual identity. Our strategic approach ensures your brand is distinctive, memorable, and legally protected through trademark support.",
-      features: ["Logo Design", "Visual Identity Systems", "Trademark Support", "Brand Strategy"]
+      features: ["Logo Design", "Visual Identity Systems", "Trademark Support", "Brand Strategy"],
+      image: "/images/services/branding-3d.png"
     }
   ];
 
@@ -53,49 +57,128 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-black text-white">
-        <div className="container">
-          <h1 className="font-display font-bold text-6xl md:text-8xl mb-8 tracking-tighter">
+      <section className="pt-32 pb-20 bg-black text-white overflow-hidden relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(50,50,50,0.4),rgba(0,0,0,1))]" />
+        <div className="container relative z-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-display font-bold text-6xl md:text-8xl mb-8 tracking-tighter"
+          >
             Our Services
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-gray-400 max-w-2xl leading-relaxed"
+          >
             We offer a comprehensive suite of creative services, optimized by our unique "AI × Human" workflow to deliver premium quality with efficiency.
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Detailed Services */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background overflow-hidden">
         <div className="container space-y-32">
           {services.map((service, index) => (
-            <div key={index} className={`flex flex-col md:flex-row gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className="flex-1 space-y-6">
-                <div className="w-20 h-20 rounded-2xl bg-secondary flex items-center justify-center text-primary mb-6">
-                  {service.icon}
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+            >
+              {/* Image Section */}
+              <div className="w-full lg:w-1/2 relative group perspective-1000">
+                <motion.div
+                  whileHover={{ scale: 1.02, rotateY: index % 2 === 0 ? 5 : -5 }}
+                  transition={{ duration: 0.5 }}
+                  className="relative z-10 overflow-hidden rounded-2xl shadow-2xl"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                  <motion.img 
+                    initial={{ scale: 1.1 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-[400px] object-cover transform transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
+                {/* Decorative Elements */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.2, 0.3, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className={`absolute -bottom-6 ${index % 2 === 0 ? '-right-6' : '-left-6'} w-24 h-24 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 opacity-20 blur-2xl -z-10`} 
+                />
+                <div className={`absolute -top-6 ${index % 2 === 0 ? '-left-6' : '-right-6'} w-32 h-32 border border-gray-200 rounded-2xl -z-10`} />
+              </div>
+
+              {/* Content Section */}
+              <div className="w-full lg:w-1/2 space-y-6">
+                <div className="flex items-center gap-4 mb-2">
+                  <motion.span 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-sm font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase"
+                  >
+                    0{index + 1}
+                  </motion.span>
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="h-px w-12 bg-gray-200 origin-left" 
+                  />
                 </div>
-                <h2 className="font-display font-bold text-4xl md:text-5xl">{service.title}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="font-display font-bold text-4xl md:text-5xl text-foreground leading-tight"
+                >
+                  {service.title}
+                </motion.h2>
+                
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-lg text-muted-foreground leading-relaxed"
+                >
                   {service.description}
-                </p>
-                <ul className="grid grid-cols-2 gap-4 pt-4">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 font-medium">
-                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-blue-500" />
-                      {feature}
-                    </li>
+                </motion.p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                  {service.features.map((feature, idx) => (
+                    <motion.div 
+                      key={idx} 
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.5 + (idx * 0.1) }}
+                      className="flex items-center gap-3 group/item"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center group-hover/item:bg-secondary/80 transition-colors">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400" />
+                      </div>
+                      <span className="text-foreground/80 font-medium">{feature}</span>
+                    </motion.div>
                   ))}
-                </ul>
-              </div>
-              <div className="flex-1 relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-blue-500 rounded-2xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity" />
-                <div className="relative aspect-video bg-secondary rounded-2xl overflow-hidden border border-border">
-                  {/* Placeholder for service detail image */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400">
-                    <span className="font-display font-bold text-2xl opacity-20">{service.title} Image</span>
-                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -115,10 +198,17 @@ export default function Services() {
             <div className="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-border z-0" />
 
             {process.map((step, index) => (
-              <div key={index} className="relative z-10 bg-background p-8 rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center text-2xl font-bold mb-6 mx-auto border-4 border-background relative">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative z-10 bg-background p-8 rounded-2xl border border-border shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center text-2xl font-bold mb-6 mx-auto border-4 border-background relative group">
                   {step.step}
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary border-2 border-background">
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary border-2 border-background group-hover:scale-110 transition-transform">
                     {step.icon}
                   </div>
                 </div>
@@ -126,7 +216,7 @@ export default function Services() {
                 <p className="text-sm text-muted-foreground text-center leading-relaxed">
                   {step.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
