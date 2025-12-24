@@ -3,12 +3,35 @@ import { Link } from "wouter";
 import { ArrowRight, Play, Code, PenTool, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  
+  // Mouse interaction for light beam
+  const mouseY = useMotionValue(500); // Default center-ish
+  
+  // Map mouse Y to rotation angles
+  // Input beam rotates between -25deg (top) and -5deg (bottom)
+  const inputRotate = useTransform(mouseY, [0, 1000], [-25, -5]);
+  
+  // Output spectrum rotates inversely for refraction effect
+  const outputRotate = useTransform(mouseY, [0, 1000], [-5, -25]);
+  
+  // Add spring physics for smooth movement
+  const springConfig = { stiffness: 100, damping: 30 };
+  const springInput = useSpring(inputRotate, springConfig);
+  const springOutput = useSpring(outputRotate, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      mouseY.set(e.clientY - rect.top);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,23 +51,42 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden bg-background">
+      <section 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        className="relative h-[90vh] flex items-center overflow-hidden bg-background"
+      >
         {/* Dynamic Background Effects */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Light Refraction Animation */}
           <div className="absolute inset-0 pointer-events-none z-10 mix-blend-overlay">
             {/* Input Beam (White Light) */}
-            <div className="absolute top-1/2 left-0 w-1/2 h-2 bg-white blur-md origin-left animate-beam" 
-                 style={{ transform: 'translateY(-50%) rotate(-15deg)', top: '60%' }} />
+            <motion.div 
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              style={{ 
+                rotate: springInput,
+                top: '60%',
+                transformOrigin: 'left center'
+              }}
+              className="absolute top-1/2 left-0 w-1/2 h-2 bg-white blur-md origin-left" 
+            />
             
             {/* Output Spectrum (Rainbow) */}
-            <div className="absolute top-1/2 left-1/2 w-full h-[400px] origin-left animate-spectrum opacity-0"
-                 style={{ 
-                   background: 'conic-gradient(from 270deg at 0% 50%, rgba(255,0,0,0.5), rgba(255,165,0,0.5), rgba(0,128,0,0.5), rgba(0,0,255,0.5), rgba(128,0,128,0.5))',
-                   transform: 'translateY(-50%) rotate(-15deg)',
-                   top: '60%',
-                   filter: 'blur(40px)'
-                 }} />
+            <motion.div 
+              initial={{ scaleX: 0, scaleY: 0.5, opacity: 0 }}
+              animate={{ scaleX: 1, scaleY: 1, opacity: 0.6 }}
+              transition={{ duration: 2, delay: 1.2, ease: "easeOut" }}
+              style={{ 
+                rotate: springOutput,
+                top: '60%',
+                transformOrigin: 'left center',
+                background: 'conic-gradient(from 270deg at 0% 50%, rgba(255,0,0,0.5), rgba(255,165,0,0.5), rgba(0,128,0,0.5), rgba(0,0,255,0.5), rgba(128,0,128,0.5))',
+                filter: 'blur(40px)'
+              }}
+              className="absolute top-1/2 left-1/2 w-full h-[400px] origin-left"
+            />
           </div>
 
           {/* Animated Gradient Orbs */}
