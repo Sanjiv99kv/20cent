@@ -92,50 +92,181 @@ export default function About() {
       </section>
 
       {/* Process / Values Section (Staggered) */}
-      <section className="py-32 bg-black text-white">
-        <div className="container">
-            <div className="text-center mb-24">
-                <h2 className="font-display font-bold text-5xl md:text-7xl mb-6">Our Core Values</h2>
-                <p className="text-gray-400 text-xl max-w-2xl mx-auto">The principles that guide every pixel we place and every line of code we write.</p>
+      <section className="py-32 bg-black text-white relative overflow-hidden">
+        {/* Background Ambient Glow */}
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container relative z-10">
+          <div className="text-center mb-32">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-display font-bold text-5xl md:text-7xl mb-6"
+            >
+              Our Core Values
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-gray-400 text-xl max-w-2xl mx-auto"
+            >
+              The principles that guide every pixel we place and every line of code we write.
+            </motion.p>
+          </div>
+
+          <div className="space-y-40">
+            {/* Value 1: Radical Efficiency */}
+            <div className="flex flex-col md:flex-row items-center gap-20 group">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full md:w-1/2 relative"
+              >
+                 <div className="aspect-[4/3] relative z-10">
+                    <motion.img 
+                      src="/images/value-efficiency.png" 
+                      alt="Radical Efficiency 3D Art"
+                      className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(59,130,246,0.3)]"
+                      animate={{ y: [0, -20, 0] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                 </div>
+                 {/* Decorative Elements */}
+                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-full md:w-1/2"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="p-3 rounded-full bg-blue-500/10 border border-blue-500/30">
+                        <Zap className="w-6 h-6 text-blue-400" />
+                    </div>
+                    <span className="text-blue-400 font-bold tracking-widest uppercase text-sm">Speed & Precision</span>
+                </div>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Radical <br/>Efficiency</h3>
+                <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                  We don't just work fast; we work smart. By leveraging custom AI workflows, we reduce production time by up to <span className="text-white font-bold">40%</span>, allowing us to iterate more and deliver faster without compromising quality.
+                </p>
+                <ul className="space-y-4">
+                    {['Automated Asset Generation', 'Rapid Prototyping', 'Scalable Code Architecture'].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 text-gray-300">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+              </motion.div>
             </div>
 
-            <div className="space-y-32">
-                {/* Value 1 */}
-                <div className="flex flex-col md:flex-row items-center gap-16">
-                    <div className="w-full md:w-1/2">
-                         <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 relative group">
-                            <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Zap className="w-24 h-24 text-white/20 group-hover:text-white/50 transition-colors" />
-                            </div>
-                         </div>
+            {/* Value 2: Global Perspective (Reversed) */}
+            <div className="flex flex-col md:flex-row-reverse items-center gap-20 group">
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full md:w-1/2 relative"
+              >
+                 <div className="aspect-[4/3] relative z-10">
+                    <motion.img 
+                      src="/images/value-global.png" 
+                      alt="Global Perspective 3D Art"
+                      className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(168,85,247,0.3)]"
+                      animate={{ y: [0, -20, 0] }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    />
+                 </div>
+                 <div className="absolute inset-0 bg-gradient-to-l from-purple-500/20 to-transparent blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-full md:w-1/2"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="p-3 rounded-full bg-purple-500/10 border border-purple-500/30">
+                        <Globe className="w-6 h-6 text-purple-400" />
                     </div>
-                    <div className="w-full md:w-1/2">
-                        <h3 className="font-display font-bold text-4xl mb-6">Radical Efficiency</h3>
-                        <p className="text-xl text-gray-400 leading-relaxed">
-                            We don't just work fast; we work smart. By leveraging custom AI workflows, we reduce production time by up to 40%, allowing us to iterate more and deliver faster without compromising quality.
-                        </p>
-                    </div>
+                    <span className="text-purple-400 font-bold tracking-widest uppercase text-sm">Borderless Thinking</span>
                 </div>
-
-                {/* Value 2 (Reversed) */}
-                <div className="flex flex-col md:flex-row-reverse items-center gap-16">
-                    <div className="w-full md:w-1/2">
-                         <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 relative group">
-                            <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Globe className="w-24 h-24 text-white/20 group-hover:text-white/50 transition-colors" />
-                            </div>
-                         </div>
-                    </div>
-                    <div className="w-full md:w-1/2">
-                        <h3 className="font-display font-bold text-4xl mb-6">Global Perspective</h3>
-                        <p className="text-xl text-gray-400 leading-relaxed">
-                            Based in Tokyo but thinking globally. Our team comprises diverse talents who understand cross-cultural nuances, ensuring your brand resonates across borders.
-                        </p>
-                    </div>
-                </div>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Global <br/>Perspective</h3>
+                <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                  Based in Tokyo but thinking globally. Our team comprises diverse talents who understand cross-cultural nuances, ensuring your brand resonates across borders.
+                </p>
+                <ul className="space-y-4">
+                    {['Cross-Cultural Design', 'Multi-Language Support', 'International Market Strategy'].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 text-gray-300">
+                            <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+              </motion.div>
             </div>
+
+            {/* Value 3: Continuous Innovation */}
+            <div className="flex flex-col md:flex-row items-center gap-20 group">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full md:w-1/2 relative"
+              >
+                 <div className="aspect-[4/3] relative z-10">
+                    <motion.img 
+                      src="/images/value-innovation.png" 
+                      alt="Continuous Innovation 3D Art"
+                      className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(236,72,153,0.3)]"
+                      animate={{ y: [0, -20, 0] }}
+                      transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                    />
+                 </div>
+                 <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-transparent blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-full md:w-1/2"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="p-3 rounded-full bg-pink-500/10 border border-pink-500/30">
+                        <Cpu className="w-6 h-6 text-pink-400" />
+                    </div>
+                    <span className="text-pink-400 font-bold tracking-widest uppercase text-sm">Future Ready</span>
+                </div>
+                <h3 className="font-display font-bold text-5xl mb-8 leading-tight">Continuous <br/>Innovation</h3>
+                <p className="text-xl text-gray-400 leading-relaxed mb-8">
+                  We don't just follow trends; we set them. By constantly experimenting with emerging technologies, we ensure your digital presence is always ahead of the curve.
+                </p>
+                <ul className="space-y-4">
+                    {['R&D Labs', 'Next-Gen Tech Stack', 'Creative Experimentation'].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 text-gray-300">
+                            <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
