@@ -271,42 +271,86 @@ export default function About() {
       </section>
 
       {/* Company Profile (Redesigned) */}
-      <section className="py-32 bg-background">
-        <div className="container max-w-4xl">
+      <section className="py-32 bg-black relative overflow-hidden">
+        {/* Stylized Map Background */}
+        <div className="absolute inset-0 z-0 opacity-40">
+            <img 
+                src="/images/map-nakameguro.png" 
+                alt="Nakameguro Map" 
+                className="w-full h-full object-cover grayscale contrast-125 brightness-50"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        </div>
+
+        <div className="container relative z-10 max-w-5xl">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-secondary/30 backdrop-blur-sm border border-border rounded-3xl p-12 md:p-16"
+                className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-[2rem] p-12 md:p-16 shadow-2xl relative overflow-hidden group"
             >
-                <h2 className="font-display font-bold text-4xl mb-12 text-center">Company Profile</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="space-y-8">
+                {/* Glassmorphism Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                <div className="flex flex-col md:flex-row gap-16">
+                    {/* Left Column: Identity */}
+                    <div className="w-full md:w-1/2 space-y-10">
                         <div>
-                            <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2">Company Name</h4>
-                            <p className="text-xl font-medium">20cent Inc. (株式会社20cent)</p>
+                            <h2 className="font-display font-bold text-4xl md:text-5xl mb-2 text-white">Company Profile</h2>
+                            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                         </div>
-                        <div>
-                            <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2">Location</h4>
-                            <p className="text-xl font-medium">
-                                1-1-17 LANTIQUE105, Nakameguro<br />
-                                Meguro-ku, Tokyo
-                            </p>
+                        
+                        <div className="space-y-2">
+                            <h4 className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em]">Company Name</h4>
+                            <p className="text-2xl font-medium text-white">20cent Inc. <span className="text-gray-500 text-lg font-normal">(株式会社20cent)</span></p>
+                        </div>
+
+                        <div className="space-y-2">
+                            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-[0.2em]">Services</h4>
+                            <ul className="grid grid-cols-2 gap-3">
+                                {['Web Development', 'Video Production', 'Brand Guidelines', 'AI Consulting'].map((service) => (
+                                    <li key={service} className="flex items-center gap-2 text-gray-300 text-sm">
+                                        <div className="w-1 h-1 bg-white rounded-full" />
+                                        {service}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
-                    <div className="space-y-8">
-                        <div>
-                            <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2">Contact</h4>
-                            <p className="text-xl font-medium">info@20cent-jp.com</p>
+
+                    {/* Right Column: Contact & Location */}
+                    <div className="w-full md:w-1/2 space-y-10 relative">
+                        {/* Vertical Divider (Desktop) */}
+                        <div className="hidden md:block absolute left-[-2rem] top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+                        <div className="space-y-4">
+                            <h4 className="text-xs font-bold text-pink-400 uppercase tracking-[0.2em]">Location</h4>
+                            <a 
+                                href="https://maps.google.com/?q=1-1-17+LANTIQUE105,+Nakameguro,+Meguro-ku,+Tokyo" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="group/map block"
+                            >
+                                <p className="text-xl text-white leading-relaxed group-hover/map:text-blue-300 transition-colors">
+                                    1-1-17 LANTIQUE105, Nakameguro<br />
+                                    Meguro-ku, Tokyo
+                                </p>
+                                <div className="flex items-center gap-2 mt-2 text-sm text-gray-500 group-hover/map:text-blue-400 transition-colors">
+                                    <Globe className="w-4 h-4" />
+                                    <span>View on Google Maps</span>
+                                </div>
+                            </a>
                         </div>
-                        <div>
-                            <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2">Services</h4>
-                            <ul className="text-xl font-medium space-y-1 text-muted-foreground">
-                                <li>Web Development</li>
-                                <li>Video Production</li>
-                                <li>Brand Guidelines</li>
-                                <li>AI Consulting</li>
-                            </ul>
+
+                        <div className="space-y-4">
+                            <h4 className="text-xs font-bold text-green-400 uppercase tracking-[0.2em]">Contact</h4>
+                            <a 
+                                href="mailto:info@20cent-jp.com" 
+                                className="inline-flex items-center gap-3 text-2xl font-medium text-white hover:text-green-300 transition-colors border-b border-white/20 hover:border-green-300 pb-1"
+                            >
+                                info@20cent-jp.com
+                                <ArrowRight className="w-5 h-5 -rotate-45" />
+                            </a>
                         </div>
                     </div>
                 </div>
