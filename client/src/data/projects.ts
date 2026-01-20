@@ -110,7 +110,7 @@ export const projects: Project[] = [
     client: "EveryX",
     category: "Branding",
     image: "/images/projects_clean/everyx.png",
-    description: "Brand Guidelines",
+    description: "Marketing",
     fullDescription: "Created detailed brand guidelines covering logo usage, typography, color palettes, and tone of voice to ensure brand consistency globally.",
     year: "2024",
     role: "Brand Strategy, Guidelines"

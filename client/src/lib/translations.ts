@@ -45,7 +45,7 @@ export const translations = {
         features: ["Commercials", "Brand Movies", "Motion Graphics", "Social Media Content"]
       },
       branding: {
-        title: "Brand Guidelines",
+        title: "Marketing",
         desc: "Strategic logo design, trademark support, and comprehensive brand identity systems.",
         longDesc: "We define your brand's visual identity. Our strategic approach ensures your brand is distinctive, memorable, and legally protected through trademark support.",
         features: ["Logo Design", "Visual Identity Systems", "Trademark Support", "Brand Strategy"]
@@ -196,7 +196,7 @@ export const translations = {
         features: ["CM制作", "ブランドムービー", "モーショングラフィックス", "SNSコンテンツ"]
       },
       branding: {
-        title: "ブランドガイドライン",
+        title: "マーケティング",
         desc: "戦略的なロゴデザイン、商標サポート、包括的なブランドアイデンティティシステム。",
         longDesc: "ブランドの視覚的アイデンティティを定義します。戦略的なアプローチにより、ブランドが特徴的で記憶に残り、商標サポートを通じて法的に保護されることを保証します。",
         features: ["ロゴデザイン", "ビジュアルアイデンティティ", "商標サポート", "ブランド戦略"]
