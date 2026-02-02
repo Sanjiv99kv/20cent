@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { Code, Video, PenTool, MessageSquare, FileText, MonitorPlay, Rocket } from "lucide-react";
+import { Code, Video, PenTool, Bot, MessageSquare, FileText, MonitorPlay, Rocket } from "lucide-react";
 import FAQ from "@/components/FAQ";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -28,6 +28,13 @@ export default function Services() {
       description: t.services.branding.longDesc,
       features: t.services.branding.features,
       image: "/images/services/branding-3d.png"
+    },
+    {
+      icon: <Bot className="w-12 h-12" />,
+      title: t.services.ai.title,
+      description: t.services.ai.longDesc,
+      features: t.services.ai.features,
+      image: "/images/services/ai-3d.png"
     }
   ];
 

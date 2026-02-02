@@ -50,6 +50,12 @@ export const translations = {
         longDesc: "We define your brand's visual identity. Our strategic approach ensures your brand is distinctive, memorable, and legally protected through trademark support.",
         features: ["Logo Design", "Visual Identity Systems", "Trademark Support", "Brand Strategy"]
       },
+      ai: {
+        title: "AI Automation",
+        desc: "Streamline operations with AI-driven workflows, chatbots, and intelligent process automation.",
+        longDesc: "We design and implement AI automation that fits your creative and operational workflows. From workflow automation to AI-augmented content pipelines, we help you scale quality and reduce repetitive work.",
+        features: ["Workflow Automation", "Chatbots & Assistants", "AI-Augmented Pipelines", "Tool Integration"]
+      },
       process: {
         title: "Our Process",
         subtitle: "Proposal Flow",
@@ -200,6 +206,12 @@ export const translations = {
         desc: "戦略的なロゴデザイン、商標サポート、包括的なブランドアイデンティティシステム。",
         longDesc: "ブランドの視覚的アイデンティティを定義します。戦略的なアプローチにより、ブランドが特徴的で記憶に残り、商標サポートを通じて法的に保護されることを保証します。",
         features: ["ロゴデザイン", "ビジュアルアイデンティティ", "商標サポート", "ブランド戦略"]
+      },
+      ai: {
+        title: "AIオートメーション",
+        desc: "AI駆動のワークフロー、チャットボット、インテリジェントなプロセスオートメーションで業務を効率化。",
+        longDesc: "クリエイティブと業務のワークフローに合わせたAIオートメーションを設計・実装します。ワークフロー自動化からAIを活用したコンテンツパイプラインまで、品質を維持しながら反復作業を削減します。",
+        features: ["ワークフロー自動化", "チャットボット・アシスタント", "AI強化パイプライン", "ツール連携"]
       },
       process: {
         title: "プロセス",

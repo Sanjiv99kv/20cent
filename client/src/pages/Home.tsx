@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { ArrowRight, Play, Code, PenTool, ChevronDown } from "lucide-react";
+import { ArrowRight, Play, Code, PenTool, ChevronDown, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
@@ -291,50 +291,67 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <Code className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">{t.services.web.title}</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                {t.services.web.desc}
-              </p>
-              <img 
-                src="/images/service-web.png" 
-                alt="Web Dev" 
-                className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
-              />
-            </div>
+          <div className="services-scroll overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 md:-mx-6 md:px-6">
+            <div className="flex gap-6 md:gap-8 min-w-0" style={{ width: "max-content" }}>
+              {/* Service 1 - Web */}
+              <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden flex-shrink-0 w-[320px] md:w-[360px]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <Code className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
+                <h3 className="font-display font-bold text-2xl mb-4">{t.services.web.title}</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">
+                  {t.services.web.desc}
+                </p>
+                <img 
+                  src="/images/service-web.png" 
+                  alt="Web Dev" 
+                  className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              </div>
 
-            {/* Service 2 */}
-            <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <Play className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">{t.services.video.title}</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                {t.services.video.desc}
-              </p>
-              <img 
-                src="/images/service-video.png" 
-                alt="Video" 
-                className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
-              />
-            </div>
+              {/* Service 2 - Video */}
+              <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden flex-shrink-0 w-[320px] md:w-[360px]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <Play className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
+                <h3 className="font-display font-bold text-2xl mb-4">{t.services.video.title}</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">
+                  {t.services.video.desc}
+                </p>
+                <img 
+                  src="/images/service-video.png" 
+                  alt="Video" 
+                  className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              </div>
 
-            {/* Service 3 */}
-            <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              <PenTool className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
-              <h3 className="font-display font-bold text-2xl mb-4">{t.services.branding.title}</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                {t.services.branding.desc}
-              </p>
-              <img 
-                src="/images/service-branding.png" 
-                alt="Branding" 
-                className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
-              />
+              {/* Service 3 - Branding */}
+              <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden flex-shrink-0 w-[320px] md:w-[360px]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <PenTool className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
+                <h3 className="font-display font-bold text-2xl mb-4">{t.services.branding.title}</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">
+                  {t.services.branding.desc}
+                </p>
+                <img 
+                  src="/images/service-branding.png" 
+                  alt="Branding" 
+                  className="w-full h-48 object-cover rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              </div>
+
+              {/* Service 4 - AI Automation */}
+              <div className="group relative p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition-all duration-500 overflow-hidden flex-shrink-0 w-[320px] md:w-[360px]">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <Bot className="w-12 h-12 mb-6 text-gray-400 group-hover:text-white transition-colors" />
+                <h3 className="font-display font-bold text-2xl mb-4">{t.services.ai.title}</h3>
+                <p className="text-gray-400 mb-8 leading-relaxed">
+                  {t.services.ai.desc}
+                </p>
+                <img 
+                  src="/images/service-ai.png" 
+                  alt="AI Automation" 
+                  className="h-52 mx-auto rounded-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              </div>
             </div>
           </div>
         </div>

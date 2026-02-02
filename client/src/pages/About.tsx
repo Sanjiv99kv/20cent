@@ -301,7 +301,7 @@ export default function About() {
                         <div className="space-y-2">
                             <h4 className="text-xs font-bold text-purple-400 uppercase tracking-[0.2em]">{t.aboutPage.profile.business}</h4>
                             <ul className="grid grid-cols-2 gap-3">
-                                {[t.services.web.title, t.services.video.title, t.services.branding.title, 'AI Consulting'].map((service) => (
+                                {[t.services.web.title, t.services.video.title, t.services.branding.title, t.services.ai.title].map((service) => (
                                     <li key={service} className="flex items-center gap-2 text-gray-300 text-sm">
                                         <div className="w-1 h-1 bg-white rounded-full" />
                                         {service}

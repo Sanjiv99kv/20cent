@@ -251,3 +251,11 @@
   --animate-beam: beam-enter 1.5s ease-out forwards;
   --animate-spectrum: spectrum-expand 2s ease-out 1.2s forwards;
 }
+
+/* Services horizontal scroller - scrollbar hidden, scroll still works */
+.services-scroll {
+  scrollbar-width: none;
+}
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
